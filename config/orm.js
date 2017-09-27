@@ -1,43 +1,26 @@
-var mysql = require("mysql");
+var connection = require("./connection.js");
 
 
-var selectAll = () => {
-    app.get("/", (req, res) => {
-        connection.query('SELECT * FROM burgers;', (err, data) => {
-            if (err) {
-                throw err;
-            }
-            res.render("index", {
-                plans: data
-            });
+var orm = {
+
+    selectAll: () => {
+        connection.query('SELECT * FROM burgers;', (err, result) => {
+            if (err) throw err;
+
         });
-    });
-};
 
-var insertOne = () => {
-    app.post("/", (req, res) => {
-        connection.query("INSERT INTO plans (plan) VALUES (?)", [req.body.plan], (err, result) => {
-            if (err) {
-                throw err;
-            }
-            res.redirect("/");
+    },
+    insertOne: (burger_name) => {
+        connection.query("INSERT INTO burgers (burger_name) VALUES (?)", [req.body.burger_name], (err, result) => {
+            if (err) throw err;
+
         });
-    });
-};
+    },
 
-var updateOne = () => {
-    app.put("/", (req, res) => {
-        connection.query("UPDATE plans SET plan = ? WHERE id = ?", [req.body.plan, req.body.id], (err, results) => {
-            if (err) {
-                throw err;
-            }
-            res.redirect("/");
+    updateOne: (burger_name, id) => {
+        connection.query("UPDATE burgers SET burger_name = ? WHERE id = ?", [req.body.burger_name, req.body.id], (err, results) => {
+            if (err) throw err;
         });
-    });
-};
-
-module.exports = {
-    selectAll: selectAll,
-    insertOne: insertOne,
-    updateOne: updateOne
-};
+    }
+}
+module.exports = orm;
