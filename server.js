@@ -4,6 +4,7 @@ var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 require('dotenv').config();
 
+
 var app = express();
 
 app.use(express.static(process.cwd() + '/public'));
@@ -25,6 +26,8 @@ app.set("view engine", "handlebars");
 // setting up routes for the use of the app
 var routes = require('./controllers/burgers_controller.js');
 app.use('/', routes);
+
+
 
 // starting the server
 var port = process.env.PORT || 3000;

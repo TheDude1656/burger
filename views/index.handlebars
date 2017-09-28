@@ -1,13 +1,12 @@
 <h1>Created Burgers!</h1>
 
-<h3>Bergssssssssssssssss</h3>
+<h3>Burgers</h3>
 
 <ul>
     {{#each burgers}} {{#unless this.devoured}}
     <li>
         <p>ID: {{this.id}}</p>
         <p>Burger: {{this.burger_name}}</p>
-        <p>Devoured: {{this.devoured}}</p>
 
         <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
             <input type="hidden" name="devoured" value="true">
