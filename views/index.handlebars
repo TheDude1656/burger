@@ -19,7 +19,7 @@
 
                 <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
                     <input type="hidden" name="devoured" value="true">
-                    <button type="submit">Devour</button>
+                    <button class="button is-dark" type="submit">Devour</button>
                 </form>
             </li>
 
@@ -27,9 +27,16 @@
         </ul>
     </div>
 </section>
+
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h2 class="title">Burgers that have been devoured</h2>
+        </div>
+    </div>
+</section>
 <section class="section">
     <div class="container" id="eaten">
-        <h2>Burgers that have been devoured</h2>
         <ul>
             {{#each burgers}} {{#if this.devoured}}
             <li>
@@ -37,25 +44,27 @@
 
                 <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
                     <input type="hidden" name="devoured" value="false">
-                    <button type="submit">Remove from devoured!</button>
+                    <button class="button is-light" type="submit"><span>Remove from devoured!</span><span class="icon is-small">
+      <i class="fa fa-times"></i>
+    </span></button>
                 </form>
             </li>
             {{/if}} {{/each}}
         </ul>
     </div>
 </section>
-<section class="section">
+<section class="section hero is-primary is-bold">
     <div class="container" id="add-burger">
         <div id="input">
-            <h2>Add a burger:</h2>
+            <h2 class="subtitle">Add a burger:</h2>
             <form class="create-update-form" action="burgers/create" method="POST">
 
                 <div class="form-group">
                     <label for="addedBurger">Burger Name:</label>
                     <input type="text" id="ca" name="burger_name">
                 </div>
-
-                <button id="add-burger-button" type="submit">Add Burger</button>
+                <br \>
+                <button class="button is-dark" id="add-burger-button" type="submit"><span>Add Burger</span><span class="icon is-small"><i class="fa fa-plus-square"></i></span></button>
             </form>
         </div>
     </div>
